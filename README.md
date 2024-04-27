@@ -359,62 +359,105 @@ MySql - інстальована в операційну систему комп
   	
 Фізична модель даних:  
   
-Таблиця Виробник
-Id	Primary key, auto_increment	INT	ID виробника
-Name	Unique, not null	VARCHAR(40)	Назва виробника
-City	not null	VARCHAR(100)	Місто виробника
-Studio	not null	VARCHAR(100)	Студія виробника
-Таблиця Країна
-Id	Primary key, auto_increment	INT	ID країни
-Name	Not null, unique	VARCHAR(40)	Назва країни
-Таблиця Жанр
-Id	Primary key, auto_increment	INT	ID жанру
-Name	Unique, not null	VARCHAR(40)	Назва жанру
-Description	null	VARCHAR(1000)	Опис жанру
-Таблиця Зала
-Id	Primary key, auto_increment	INT	ID зали
-Name	Unique, not null	VARCHAR(40)	Назва зали
-Таблиця Категорія
-Id	Primary key, auto_increment	INT	ID категорії
-Name	Unique, not null	VARCHAR(100)	Назва категорії
-Таблиця Ціна
-Id	Primary key, auto_increment	INT	ID ціни
-Date	Unique(Date, Time, CategoryId), Not null	DATE	дата
-Time	Unique(Date, Time, CategoryId), Not null	TIME	час
-CategoryId	Unique(Date, Time, CategoryId), null, foreign key Category(Id)	INT	ID категорії
-Cost	Not null	DECIMAL(5,2)	Вартість 
-Таблиця Фільм
-Id	Primary key, auto_increment	INT	ID фільму
-Name	Not null	VARCHAR(100)	Назва фільму
-Duration	Check (YearOfIssue>=1895)	INT	Тривалість фільму
-YearOfIssue	null	INT	Рік виходу фільму
-AgeConstraint	null	VARCHAR(15)	Вікові обмеження
-ProductionId	null	INT	ID виробника
-GenreId	null	INT	ID жанру
-CountryId	null	INT	ID країни
-Description	Not null	VARCHAR(1000)	Опис фільму
-Таблиця Покупка
-Id	Primary key, auto_increment	INT	ID покупки
-Date	Not null	DATE	Дата покупки
-Time	Not null	TIME	Час покупки
-HallId	Null, foreign key Hall(Id)	INT	ID зали
-Row	Not null	INT	Номер ряду
-Place	Not null	INT	Номер місця
-FilmId	Null, foreign key Film(Id)	INT	ID фільму
-PriceId	Null, foreign key Price(Id)	INT	ID ціни
-IsSold	Not null, default false	BOOLEAN	Чи проданий 
-Таблиця Квиток
-Id	Primary key, auto_increment	INT	ID квитка
-Date	Not null	DATE	Дата квитка
-Time	Not null	TIME	Час квитка
-Customer	Not null	VARCHAR(40)	Прізвище 
-BookingId	Null, foreign key Booking(Id)	INT	ID покупки
-Benefits	Not null, default ‘Немає’, check (Benefits IN (‘Немає’,’Школяр’, 
-’Студент’))	VARCHAR(10)	Пільги
-EndPrice	null	DECIMAL(5,2)	Кінцева ціна
+Таблиця Виробник  
+  
+  
+  
+| Id	          |  Primary key, auto_increment    |  	INT	       |  ID виробника     |  
+| Name	          |  Unique, not null	            | VARCHAR(40)      | Назва виробника   |  
+| City	          |  not null	                    | VARCHAR(100)     | Місто виробника   |  
+| Studio	  |  not null	                    | VARCHAR(100)     | Студія виробника  |  
 
 
+    
+Таблиця Країна  
 
+
+  
+| Id		  |  Primary key, auto_increment    |  	INT	       | ID країни         |  
+| Name	          |  Not null, unique	            | VARCHAR(40)      | Назва країни      |  
+
+  
+  Таблиця Жанр  
+
+  
+| Id		  |  Primary key, auto_increment    |  INT	       | ID жанру          |  
+| Name	          | Unique, not null	            | VARCHAR(40)      | Назва жанру       |  
+| Description	  | null	                    | VARCHAR(1000)    | Опис жанру        |  
+
+
+  
+Таблиця Зала  
+
+  
+| Id	          | Primary key, auto_increment	    | INT	       | ID зали           |  
+| Name	          | Unique, not null         	    | VARCHAR(40)      | Назва зали        |  
+
+
+    
+Таблиця Категорія  
+  
+  
+| Id		  |  Primary key, auto_increment    | INT	       |  ID категорії      | 
+| Name		  |  Unique, not null		    | VARCHAR(100)     |  Назва категорії   |  
+
+
+  
+Таблиця Ціна  
+
+  
+| Id		  | Primary key, auto_increment	                		   | INT	      | ID ціни           |  
+| Date		  | Unique(Date, Time, CategoryId), Not null			   | DATE             | дата              |  
+| Time		  | Unique(Date, Time, CategoryId), Not null			   | TIME	      | час               |  
+| CategoryId	  | Unique(Date, Time, CategoryId), null, foreign key Category(Id) |	INT	      | ID категорії      |  
+| Cost		  | Not null							   | DECIMAL(5,2)     |  Вартість         |  
+
+
+   
+Таблиця Фільм  
+  
+
+  
+
+| Id		  | Primary key, auto_increment	  | INT		   | ID фільму          |  
+| Name	          | Not null			  | VARCHAR(100)   | Назва фільму       |  
+| Duration	  | Check (YearOfIssue>=1895)	  | INT		   | Тривалість фільму  |  
+| YearOfIssue	  | null			  | INT		   | Рік виходу фільму  |  
+| AgeConstraint	  | null			  | VARCHAR(15)	   | Вікові обмеження   |  
+| ProductionId	  | null			  | INT		   | ID виробника       |  
+| GenreId	  | null	                  | INT		   | ID жанру		|  
+| CountryId	  | null			  | INT		   | ID країни		|  
+| Description	  | Not null			  | VARCHAR(1000)  | Опис фільму  	|  
+    
+  
+Таблиця Покупка  
+
+  
+| Id		  | Primary key, auto_increment	  | INT		   | ID покупки		|  
+| Date		  | Not null			  | DATE	   | Дата покупки	|  
+| Time		  | Not null			  | TIME	   | Час покупки        |  
+| HallId	  | Null, foreign key Hall(Id)	  | INT	           | ID зали            |  
+| Row		  | Not null			  | INT		   | Номер ряду		|  
+| Place		  | Not null	 		  | INT		   | Номер місця 	|  
+| FilmId	  | Null, foreign key Film(Id)	  | INT		   | ID фільму 		|  
+| PriceId	  | Null, foreign key Price(Id)	  | INT		   | ID ціни		|  
+| IsSold	  | Not null, default false	  | BOOLEAN	   | Чи проданий 	|  
+  
+
+  
+  Таблиця Квиток  
+
+   
+    
+| Id		  | Primary key, auto_increment	  						   | INT            | ID квитка		 |  
+| Date		  | Not null			  						   | DATE	    | Дата квитка	 |  
+| Time		  | Not null			  						   | TIME	    | Час квитка  	 |  
+| Customer	  | Not null			  						   | VARCHAR(40)    | Прізвище 		 |  
+| BookingId	  | Null, foreign key Booking(Id) 						   | INT            | ID покупки	 |  
+| Benefits	  | Not null, default ‘Немає’, check (Benefits IN (‘Немає’,’Школяр’, ’Студент’))   | VARCHAR(10)    | Пільги		 |  
+| EndPrice	  | null									   | DECIMAL(5,2)   | Кінцева ціна	 |  
+  
+  
 4.5 Ескіз інтерфейсу користувача
 
 Для того, щоб було зручно користуватись адміністратору та простим користувачам додатком, було створено графічний інтерфейс додатку. При запуску графічного інтерфейсу додатку, першою формою буде форма з кнопками для вибору подальших дій.
